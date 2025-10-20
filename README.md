@@ -21,3 +21,28 @@
 3. 커스텀 구분자 지정
 
 4. 에러 핸들러
+
+---
+
+## Trouble Shooting
+### 1. readLineAsync 인식 방법에 대해서 이해하지 못함
+**1. 상황**
+//kb\n 와 같은 커스텀 구분자가 포함된 input에서
+  const customDelimiterRegex = /\/\/(.*?)\n/;
+  const match = input.match(customDelimiterRegex);
+와 같은 코드에서 match가 null로만 나오는 오류 발생
+
+**2. 분석**
+진짜 줄바꿈 문자인 \\n와 그냥 문자인 \n의 구분에서 오류가 발생
+정규식은 진짜 줄바꿈 문자를 찾으려고 시도 -> input에는 진짜 줄바꿈 문자는 없음 -> match가 null.
+
+**3. 해결**
+정규식 코드를 수정
+  const customDelimiterRegex = /\/\/(.*?)\n/; -> const customDelimiterRegex = /\/\/(.*?)\\n/;
+input에는 줄바꿈의 개념이 없음, 정규식의 \n을 \\n으로 변경해서 단순한 문자인 \n을 찾는 것으로 변경.
+
+**4. 결과**
+
+<img width="764" height="157" alt="스크린샷 2025-10-20 오후 1 29 45" src="https://github.com/user-attachments/assets/d029f9bc-b085-4b08-b814-cc215b206262" />
+
+
