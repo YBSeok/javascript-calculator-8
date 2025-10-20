@@ -1,9 +1,13 @@
 import { Console } from "@woowacourse/mission-utils";
+import ErrorHandler from "./error/ErrorHandler.js";
+
 class App {
   async run() {
     const input = await Console.readLineAsync(
       "덧셈할 문자열을 입력해 주세요.\n"
     );
+
+    ErrorHandler.validateInput(input);
 
     let numbersString = input;
     let baseDelimiters = ",:";
@@ -26,16 +30,25 @@ class App {
       "\\$&"
     );
 
+    console.log("Debug: numbersString", numbersString);
+    console.log("Debug: escapedDelimiter", escapedDelimiter);
+
     const finalDelimiters = new RegExp(
       `[${baseDelimiters}${escapedDelimiter}]`
     );
 
-    const numbers = numbersString.split(finalDelimiters);
-    let result = 0;
+    console.log("Debug: finalDelimiters", finalDelimiters);
 
+    const numbers = numbersString.split(finalDelimiters);
+
+    console.log("Debug: numbers", numbers);
+
+    let result = 0;
     for (const num of numbers) {
       if (num) {
-        result += parseInt(num, 10);
+        const parsedNum = parseInt(num, 10);
+        ErrorHandler.validateNumber(parsedNum);
+        result += parsedNum;
       }
     }
 
