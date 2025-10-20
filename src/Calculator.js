@@ -10,7 +10,7 @@ export default class Calculator {
     let baseDelimiters = ",:";
     let customDelimiter = "";
 
-    const customDelimiterRegex = /\/\/(.*?)\n/;
+    const customDelimiterRegex = /\/\/(.*?)\\n/;
     const match = this.input.match(customDelimiterRegex);
 
     if (match) {
