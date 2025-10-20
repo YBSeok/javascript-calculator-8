@@ -32,6 +32,15 @@
 - 코드
   ErrorHandler.validateNumber(parsedNum);
 
+### 입력값이 없으면 의도와 다르다고 가정한다.
+**요구사항**
+- 입력값이 없으면 error로 처리한다.
+
+**구현**
+- input의 길이가 0이면 예외처리한다.
+- 코드
+  ErrorHandler.validateEmptyInput(input);
+
 ### 커스텀 구분자는 1개라고 가정한다.
 요구사항에는 명시되어 있지 않으나, 테스트케이스를 기준으로 커스텀 구분자는 1개라고 가정했다.
 
