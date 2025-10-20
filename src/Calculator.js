@@ -6,6 +6,8 @@ export default class Calculator {
   }
 
   calculate() {
+    ErrorHandler.validateEmptyInput(this.input);
+
     let numbersString = this.input;
     let baseDelimiters = ",:";
     let customDelimiter = "";
