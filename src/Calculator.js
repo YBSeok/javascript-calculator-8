@@ -12,6 +12,9 @@ export default class Calculator {
 
     const customDelimiterRegex = /\/\/(.*?)\\n/;
     const match = this.input.match(customDelimiterRegex);
+    const parts = this.input.split(customDelimiterRegex);
+
+    ErrorHandler.validateInput(parts);
 
     if (match) {
       customDelimiter = match[1];
