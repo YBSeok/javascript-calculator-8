@@ -32,6 +32,14 @@
 - 코드
   ErrorHandler.validateNumber(parsedNum);
 
+### 커스텀 구분자는 1개라고 가정한다.
+요구사항에는 명시되어 있지 않으나, 테스트케이스를 기준으로 커스텀 구분자는 1개라고 가정했다.
+
+**구현**
+- 커스텀 구분자 구별 정규식인 const customDelimiterRegex = /\/\/(.*?)\\n/; 로 split을 하게되면, 커스텀 선언이 2개 이상일 경우
+  split의 결과가 5개의 항 이상이 된다. 이를 이용해서 예외처리를 진행한다.
+- 코드
+  ErrorHandler.validateInput(parts);
 
 ---
 
